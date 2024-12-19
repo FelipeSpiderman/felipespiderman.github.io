@@ -5,13 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
-    
+    <script>
+        function getCurrentStepNumber() {
+            let filename = window.location.pathname.split('/').pop();
+            let stepNumber = parseInt(filename.match(/\d+/));
+            return stepNumber;
+        }
+
+        function goToStep(direction) {
+            let currentStep = getCurrentStepNumber();
+            let newStep = direction === 'next' ? currentStep + 1 : currentStep - 1;
+            
+            if (newStep < 1) {
+                window.location.href = 'Recipe.html';
+            } else if (newStep > 35) {
+                window.location.href = 'Recipe.html';
+            } else {
+                window.location.href = 'step' + newStep + '.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container text-center">
         <div class="row rounded-4 p-3 mb-4" style="font-size: 30px; background-color: #d5af6e;">
             <div class="col">
-                Recipe and Ingredients
+                Steps
             </div>
         </div>
         <div class="container text-center position-relative">
@@ -22,35 +41,27 @@
                 </svg>
             </button>
         <div class="main-content">
-            <button onclick="window.location.href='step1.html'" class="nav-arrow">
+            <button onclick="goToStep('prev')" class="nav-arrow" style="position: absolute; top: 20px; left: 20px; font-size: 24px; cursor: pointer; background-color: #d5af6e; border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                ←
+            </button>
+            <button onclick="goToStep('next')" class="nav-arrow" style="position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; background-color: #d5af6e; border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
                 →
             </button>
             <div class="container">
                 <div class="row align-items-center g-5">
                     <div class="col-md-6 text-start">
-                        <h2 class="display-5 mb-4">Before you begin to cook..</h2>
-                        <p class="recipe-description">Make sure you have these Ingredients. If you have more, the better.</p>
+                        <h2 class="display-5 mb-4">Step 25</h2>                    
                         <ul class="list-unstyled recipe-stats">
-                            <li>170g Biscuits </li>
-                            <li>400g Sugar</li>
-                            <li>Salt</li>
-                            <li>50g Butter</li>
-                            <li>800g Cream Cheese</li>
-                            <li>4 Eggs, 1 Egg yolk</li>
-                            <li>110g Heavy Cream </li>
-                            <li>Vanilla extract</li>
-                            <li>200g Blueberries</li>    
-                            <li>40g Cornstarch</li>
+                            <li>Add the filling to the form till the middle</li>  
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <img src="pics/1.jpg" class="img-fluid rounded shadow" alt="Delicious Cheesecake">
+                        <img src="pics/28.jpg" class="img-fluid rounded shadow" alt="Delicious Cheesecake">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="container text-center">
         <div class="row align-items-end">
             <div class="col rounded-4 mx-3 p-3" style="font-size: 15px; background-color: #d5af6e;">
